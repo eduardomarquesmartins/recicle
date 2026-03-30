@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Leandro Reciclagem PET Porto Alegre | Compra de Fardos e Venda de Flakes r-PET</title>
+    <meta name="description" content="Leandro Comércio e Reciclagem: Especialista em PET r-PET em Porto Alegre e RS. Compramos fardos de garrafas pós-consumo e vendemos polímeros de alta pureza para indústrias. Líder em economia circular regional." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://leandroreciclagem.com.br/" />
+    <meta property="og:title" content="Leandro Reciclagem PET Porto Alegre | Compra e Venda de Polímeros" />
+    <meta property="og:description" content="Especialista em PET r-PET em Porto Alegre e RS. Compramos fardos de garrafas e vendemos polímeros de alta pureza para indústrias." />
+    <meta property="og:image" content="logo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Leandro Reciclagem PET Porto Alegre | Compra e Venda de Polímeros" />
+    <meta property="twitter:description" content="Especialista em PET r-PET em Porto Alegre e RS. Compramos fardos de garrafas e vendemos polímeros de alta pureza para indústrias." />
+    <meta property="twitter:image" content="logo.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Leandro Comércio e Reciclagem",
+      "image": "logo.png",
+      "@id": "",
+      "url": "https://leandroreciclagem.com.br/",
+      "telephone": "+5551984988600",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Porto Alegre",
+        "addressLocality": "Porto Alegre",
+        "addressRegion": "RS",
+        "postalCode": "90000-000",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -30.0346,
+        "longitude": -51.2177
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    }
+    </script>
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="tailwind-config.js"></script>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-background font-body text-on-background antialiased overflow-x-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <!-- Global Fixed Background Bottle -->
+    <div id="fixed-bg-bottle" class="fixed inset-y-0 right-0 w-[50vw] pointer-events-none z-[-1] opacity-0 transition-opacity duration-1000 flex items-center justify-end">
+        <img src="garrafasorry.png" class="h-[120vh] w-auto object-contain translate-x-1/4 opacity-[0.06]" alt=""/>
+    </div>
+
+    <!-- TopNavBar -->
+    <nav id="main-nav" class="fixed top-0 w-full z-50 nav-transparent border-b border-transparent transition-all duration-500">
+        <div class="max-w-[1600px] mx-auto flex justify-between items-center px-4 sm:px-12 py-4 sm:py-5">
+            <div class="flex items-center gap-4 group cursor-pointer">
+                <!-- Official Leandro Logo -->
+                <div class="relative flex items-center justify-center transition-all duration-700 group-hover:scale-110">
+                    <img src="logo.png" alt="Leandro Comércio e Reciclagem - Sucata e Flakes de PET" fetchpriority="high" class="h-14 w-auto object-contain drop-shadow-sm"/>
+                </div>
+                <div class="flex flex-col gap-0.5">
+                    <div class="text-xl font-black tracking-tighter text-on-surface font-headline uppercase italic leading-none">Leandro</div>
+                    <div class="text-[11px] font-extrabold tracking-[0.1em] text-primary/80 font-headline uppercase whitespace-nowrap">Comércio e Reciclagem</div>
+                </div>
+            </div>
+            <div class="hidden lg:flex items-center space-x-10">
+                <a class="text-on-surface-variant hover:text-primary transition-all font-headline tracking-tighter font-bold text-[13px] uppercase" href="#inicio">Início</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all font-headline tracking-tighter font-bold text-[13px] uppercase" href="#sustentabilidade">Sustentabilidade</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all font-headline tracking-tighter font-bold text-[13px] uppercase" href="#materiais">Materiais</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all font-headline tracking-tighter font-bold text-[13px] uppercase" href="#impacto">Impacto r-PET</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all font-headline tracking-tighter font-bold text-[13px] uppercase" href="#faq">Dúvidas</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all font-headline tracking-tighter font-bold text-[13px] uppercase" href="#contato">Fale Conosco</a>
+            </div>
+            <div class="flex items-center gap-8 pl-8 border-l border-outline-variant/30 ml-4">
+                <div class="hidden sm:flex items-center space-x-3">
+                    <a href="https://wa.me/5551984988600?text=Olá!%20Tenho%20fardos%20de%20PET%20para%20vender%20e%20gostaria%20de%20uma%20cotação." class="text-on-surface px-6 py-2.5 rounded-full font-headline font-bold text-[11px] uppercase transition-all text-center hover-button border border-outline-variant shadow-sm">Quero Vender</a>
+                    <a href="https://wa.me/5551984988600?text=Olá!%20Gostaria%20de%20receber%20informações%20sobre%20disponibilidade%20e%20preços%20de%20polímeros." class="bg-gradient-to-br from-primary to-primary-container text-white px-7 py-2.5 rounded-full font-headline font-bold text-[11px] uppercase transition-all text-center hover-button shadow-lg">Quero Comprar</a>
+                </div>
+                <!-- Hamburger Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface" aria-label="Abrir menu de navegação">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] translate-x-full transition-transform duration-500 ease-in-out lg:hidden">
+            <div class="flex flex-col h-full p-8">
+                <div class="flex justify-between items-center mb-16">
+                    <div class="flex items-center gap-3">
+                        <img src="logo.png" alt="Logo" class="h-10 w-auto"/>
+                        <div class="font-headline font-black italic uppercase leading-none">Leandro</div>
+                    </div>
+                    <button id="close-menu-btn" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-high">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-8 mb-auto">
+                    <a class="mobile-nav-link text-3xl font-headline font-extrabold uppercase tracking-tighter" href="#inicio">Início</a>
+                    <a class="mobile-nav-link text-3xl font-headline font-extrabold uppercase tracking-tighter" href="#sustentabilidade">Sustentabilidade</a>
+                    <a class="mobile-nav-link text-3xl font-headline font-extrabold uppercase tracking-tighter" href="#materiais">Materiais</a>
+                    <a class="mobile-nav-link text-3xl font-headline font-extrabold uppercase tracking-tighter" href="#impacto">Impacto r-PET</a>
+                    <a class="mobile-nav-link text-3xl font-headline font-extrabold uppercase tracking-tighter" href="#faq">Dúvidas</a>
+                    <a class="mobile-nav-link text-3xl font-headline font-extrabold uppercase tracking-tighter" href="#contato">Fale Conosco</a>
+                </nav>
+                <div class="flex flex-col gap-4">
+                    <a href="#venda" class="w-full py-5 bg-surface-container-high rounded-2xl text-center font-headline font-bold uppercase tracking-widest text-sm close-menu-action">Quero Vender</a>
+                    <a href="#compra" class="w-full py-5 bg-primary text-white rounded-2xl text-center font-headline font-bold uppercase tracking-widest text-sm close-menu-action">Quero Comprar</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+
+        <!-- Hero Section: Organic Modern (Beige) -->
+        <section class="relative w-full hero-organic-bg pb-20 pt-10">
+            <canvas id="tree-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-20"></canvas>
+            <div class="max-w-7xl mx-auto px-4 sm:px-8 pt-28 sm:pt-48 pb-16 sm:pb-32 relative z-20">
+                <div class="flex flex-col md:flex-row items-center gap-20">
+                    <div class="flex-1 text-center md:text-left">
+                        <span class="text-primary font-bold tracking-[0.3em] text-xs uppercase mb-6 block font-headline">Compra e Venda de PET</span>
+                        <h1 class="font-headline text-5xl md:text-[6rem] font-black tracking-tighter text-on-surface mb-8 leading-[0.9] text-balance">
+                            Sua melhor <br/>escolha em <br/><span class="text-primary italic">Reciclagem PET</span>.
+                        </h1>
+                        <p class="text-on-surface-variant text-xl max-w-xl mb-12 leading-relaxed font-body font-bold">
+                            Seja para escoar sua produção ou para garantir matéria-prima sustentável de alta qualidade.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 items-center md:items-start text-center">
+                            <a href="https://wa.me/5551984988600?text=Olá!%20Gostaria%20de%20comprar%20insumos." class="bg-primary text-white px-12 py-5 rounded-full font-headline font-black text-lg shadow-xl transition-all hover-button uppercase tracking-tight italic">
+                                Quero Comprar Insumos
+                            </a>
+                            <a href="https://wa.me/5551984988600?text=Olá!%20Tenho%20fardos%20para%20vender." class="px-10 py-5 bg-white text-on-surface rounded-full font-headline font-black text-lg shadow-lg hover:bg-surface-container-low transition-all uppercase tracking-tight italic border border-outline-variant/30">
+                                Vender fardos
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex-1 relative flex justify-center">
+                        <!-- Organic Shape Wrapper with Orange Tint -->
+                        <div class="relative w-full max-w-xl aspect-[4/5] hero-blob-mask overflow-hidden shadow-[0_64px_128px_-24px_rgba(45,106,79,0.2)] border-8 border-white group">
+                            <img src="nick-fewings-ywVgG0lDbOk-unsplash.jpg" alt="Equipe de processamento de PET Leandro Reciclagem em Porto Alegre" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"/>
+                            <div class="absolute inset-0 bg-[#f09d22]/15"></div>
+                        </div>
+                        <div class="absolute -bottom-10 -left-10 bg-white p-8 sm:p-12 rounded-[3.5rem] shadow-2xl max-w-[10rem] sm:max-w-xs hidden lg:block border border-white/50">
+                            <span class="font-headline text-6xl font-black text-primary block mb-3 italic tracking-tighter">100%</span>
+                            <p class="text-[14px] text-on-surface font-black leading-tight uppercase tracking-[0.1em]">Regional & Sustentável</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottle overlapping hero + sustentabilidade -->
+        <div class="relative pointer-events-none" style="height:0; z-index:15">
+            <div class="bottle-transition-hub" style="top:-16rem">
+                <img src="garrafa.png" id="bottle-hero-img" alt="Garrafa PET pronta para reciclagem industrial" class="w-full h-auto floating-3d-bottle drop-shadow-2xl transition-opacity duration-300"/>
+            </div>
+        </div>
+
+        <!-- The PET Journey: Vibrant Lime Layout -->
+        <section class="bg-[#a0d434] py-16 sm:py-32 px-4 sm:px-8 relative" id="sustentabilidade">
+            <div class="max-w-7xl mx-auto relative z-20">
+                <div class="mb-20 text-left">
+                    <span class="text-black/50 font-black tracking-[0.4em] text-sm uppercase mb-4 block">Do Fardo ao Flake</span>
+                    <h2 class="font-headline text-5xl md:text-7xl font-black text-on-surface uppercase tracking-tight italic leading-none max-w-4xl" style="text-shadow: 0 2px 12px rgba(0,0,0,0.25)">Simples assim.<br/><span class="text-white not-italic">Você traz o fardo, a gente entrega o flake.</span></h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Step 01 -->
+                    <div class="bg-black/10 backdrop-blur-sm rounded-[3rem] p-10 flex flex-col gap-6 hover-card group relative overflow-hidden">
+                        <div class="absolute top-8 right-8 font-headline font-black text-[6rem] leading-none text-black/10 italic select-none">01</div>
+                        <div class="w-16 h-16 bg-black rounded-2xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#a0d434] text-3xl" style="font-variation-settings:'FILL' 1">local_shipping</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline text-2xl font-black mb-3 uppercase italic tracking-tighter text-black">Coleta e Pagamento</h3>
+                            <p class="text-black/70 leading-relaxed font-bold text-base">Buscamos seus fardos prensados em Porto Alegre e Região Metropolitana. Pesagem, conferência e pagamento no ato.</p>
+                        </div>
+                        <div class="mt-auto pt-6 border-t border-black/15 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-black/40 text-sm">check_circle</span>
+                            <span class="text-black/60 text-xs font-black uppercase tracking-widest">Frota própria</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 02 — destaque central -->
+                    <div class="bg-black rounded-[3rem] p-10 flex flex-col gap-6 hover-card group relative overflow-hidden md:-mt-6 md:mb-6 shadow-2xl">
+                        <div class="absolute top-8 right-8 font-headline font-black text-[6rem] leading-none text-white/20 italic select-none">02</div>
+                        <div class="w-16 h-16 bg-[#a0d434] rounded-2xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-black text-3xl" style="font-variation-settings:'FILL' 1">precision_manufacturing</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline text-2xl font-black mb-3 uppercase italic tracking-tighter text-white">Triagem e Descontaminação</h3>
+                            <p class="text-white/70 leading-relaxed font-bold text-base">Separamos por cor e tipo, removemos contaminantes e garantimos viscosidade estável — o que sua sopradora precisa para rodar sem parar.</p>
+                        </div>
+                        <div class="mt-auto pt-6 border-t border-white/10 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-[#a0d434] text-sm">check_circle</span>
+                            <span class="text-white/60 text-xs font-black uppercase tracking-widest">IV controlado por lote</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 03 -->
+                    <div class="bg-black/10 backdrop-blur-sm rounded-[3rem] p-10 flex flex-col gap-6 hover-card group relative overflow-hidden">
+                        <div class="absolute top-8 right-8 font-headline font-black text-[6rem] leading-none text-black/10 italic select-none">03</div>
+                        <div class="w-16 h-16 bg-black rounded-2xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#a0d434] text-3xl" style="font-variation-settings:'FILL' 1">inventory</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline text-2xl font-black mb-3 uppercase italic tracking-tighter text-black">Entrega de Flakes r-PET</h3>
+                            <p class="text-black/70 leading-relaxed font-bold text-base">Flakes cristal, verde ou mix com laudo técnico. Entregamos no seu galpão com rastreabilidade de lote e consistência de fornecimento.</p>
+                        </div>
+                        <div class="mt-auto pt-6 border-t border-black/15 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-black/40 text-sm">check_circle</span>
+                            <span class="text-black/60 text-xs font-black uppercase tracking-widest">Laudo técnico incluso</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Materials Inventory Section: Clean & Industrial -->
+        <section class="py-16 sm:py-24 px-4 sm:px-8 bg-surface-container-low" id="materiais">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <span class="text-on-surface-variant font-black tracking-[0.2em] text-xs uppercase mb-4 block">Nosso Inventário</span>
+                        <h2 class="font-headline text-4xl md:text-6xl font-black text-on-surface uppercase italic tracking-tighter leading-none">O que<br/>processamos</h2>
+                    </div>
+                    <p class="text-on-surface-variant font-bold max-w-xs text-sm leading-relaxed">Compramos fardos pós-consumo e vendemos flakes processados. Tudo dentro do RS.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <!-- Buying Column -->
+                    <div class="bg-primary/10 rounded-[3rem] p-10 space-y-6">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-3 h-10 bg-primary rounded-full"></div>
+                            <h3 class="font-headline text-3xl font-black text-primary uppercase italic tracking-tighter">Compramos</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="bg-white hover:bg-surface-container-low transition-all rounded-2xl px-8 py-6 flex items-center justify-between group cursor-default shadow-sm">
+                                <div class="flex items-center gap-5">
+                                    <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings:'FILL' 1">inventory_2</span>
+                                    <div>
+                                        <h4 class="font-black text-on-surface text-lg uppercase tracking-tighter">PET Cristal</h4>
+                                        <p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Fardos prensados, pós-consumo</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+                            </div>
+                            <div class="bg-white hover:bg-surface-container-low transition-all rounded-2xl px-8 py-6 flex items-center justify-between group cursor-default shadow-sm">
+                                <div class="flex items-center gap-5">
+                                    <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings:'FILL' 1">recycling</span>
+                                    <div>
+                                        <h4 class="font-black text-on-surface text-lg uppercase tracking-tighter">PET Verde</h4>
+                                        <p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Garrafas de refrigerante e água</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+                            </div>
+                            <div class="bg-white hover:bg-surface-container-low transition-all rounded-2xl px-8 py-6 flex items-center justify-between group cursor-default shadow-sm">
+                                <div class="flex items-center gap-5">
+                                    <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings:'FILL' 1">category</span>
+                                    <div>
+                                        <h4 class="font-black text-on-surface text-lg uppercase tracking-tighter">PET Mix Color</h4>
+                                        <p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Azul, âmbar e outros tons</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+                            </div>
+                            <div class="bg-white hover:bg-surface-container-low transition-all rounded-2xl px-8 py-6 flex items-center justify-between group cursor-default shadow-sm">
+                                <div class="flex items-center gap-5">
+                                    <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings:'FILL' 1">local_shipping</span>
+                                    <div>
+                                        <h4 class="font-black text-on-surface text-lg uppercase tracking-tighter">Grande Escala</h4>
+                                        <p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">A partir de cargas consolidadas</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5551984988600?text=Olá!%20Tenho%20fardos%20de%20PET%20para%20vender." class="mt-4 w-full py-5 bg-primary text-white rounded-2xl font-headline font-black uppercase tracking-widest text-sm text-center block hover-button">
+                            Quero Vender Fardos
+                        </a>
+                    </div>
+
+                    <!-- Selling Column -->
+                    <div class="bg-[#00a4ce]/10 rounded-[3rem] p-10 space-y-6">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-3 h-10 bg-[#00a4ce] rounded-full"></div>
+                            <h3 class="font-headline text-3xl font-black text-[#00a4ce] uppercase italic tracking-tighter">Vendemos</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="bg-white hover:bg-surface-container-low transition-all rounded-2xl px-8 py-6 flex items-center justify-between group cursor-default shadow-sm">
+                                <div class="flex items-center gap-5">
+                                    <span class="material-symbols-outlined text-[#00a4ce] text-2xl" style="font-variation-settings:'FILL' 1">grain</span>
+                                    <div>
+                                        <h4 class="font-black text-on-surface text-lg uppercase tracking-tighter">Flakes Cristal</h4>
+                                        <p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Alta transparência, baixa contaminação</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-outline group-hover:text-[#00a4ce] transition-colors">arrow_forward</span>
+                            </div>
+                            <div class="bg-white hover:bg-surface-container-low transition-all rounded-2xl px-8 py-6 flex items-center justify-between group cursor-default shadow-sm">
+                                <div class="flex items-center gap-5">
+                                    <span class="material-symbols-outlined text-[#00a4ce] text-2xl" style="font-variation-settings:'FILL' 1">spa</span>
+                                    <div>
+                                        <h4 class="font-black text-on-surface text-lg uppercase tracking-tighter">Flakes Verde</h4>
+                                        <p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Para embalagens e fibras têxteis</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-outline group-hover:text-[#00a4ce] transition-colors">arrow_forward</span>
+                            </div>
+                            <div class="bg-white hover:bg-surface-container-low transition-all rounded-2xl px-8 py-6 flex items-center justify-between group cursor-default shadow-sm">
+                                <div class="flex items-center gap-5">
+                                    <span class="material-symbols-outlined text-[#00a4ce] text-2xl" style="font-variation-settings:'FILL' 1">texture</span>
+                                    <div>
+                                        <h4 class="font-black text-on-surface text-lg uppercase tracking-tighter">Flakes Mix</h4>
+                                        <p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">IV controlada, lote rastreável</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-outline group-hover:text-[#00a4ce] transition-colors">arrow_forward</span>
+                            </div>
+                            <div class="bg-white hover:bg-surface-container-low transition-all rounded-2xl px-8 py-6 flex items-center justify-between group cursor-default shadow-sm">
+                                <div class="flex items-center gap-5">
+                                    <span class="material-symbols-outlined text-[#00a4ce] text-2xl" style="font-variation-settings:'FILL' 1">verified_user</span>
+                                    <div>
+                                        <h4 class="font-black text-on-surface text-lg uppercase tracking-tighter">Certificados</h4>
+                                        <p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Laudo técnico por lote</p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined text-outline group-hover:text-[#00a4ce] transition-colors">arrow_forward</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5551984988600?text=Olá!%20Gostaria%20de%20comprar%20flakes%20r-PET." class="mt-4 w-full py-5 bg-[#00a4ce] text-white rounded-2xl font-headline font-black uppercase tracking-widest text-sm text-center block hover-button">
+                            Quero Comprar Flakes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3 Downwards: Business & Impact with Monumental BG -->
+        <div class="relative overflow-hidden bg-[#00a4ce]">
+            <!-- Difference & Regional Logic: Vibrant Teal Layout -->
+            <section class="bg-transparent px-4 sm:px-8 py-16 sm:py-32 relative z-10" id="negocios">
+            <div class="max-w-[1600px] mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        <div class="bg-white p-14 rounded-[4rem] flex flex-col justify-between hover-card shadow-2xl border-none transition-all">
+                        <div>
+                            <div class="w-20 h-20 bg-[#00a4ce]/10 rounded-[1.5rem] flex items-center justify-center mb-10">
+                                <span class="material-symbols-outlined text-[#00a4ce] text-5xl">local_shipping</span>
+                            </div>
+                            <h3 class="font-headline text-3xl font-black text-on-surface mb-6 uppercase italic tracking-tighter leading-none">Coleta <br/>Programada</h3>
+                            <p class="text-on-surface-variant font-bold leading-relaxed text-lg opacity-80">Agendamos a retirada dos seus fardos em Porto Alegre e Região Metropolitana. Frota própria, sem terceiros, sem atraso.</p>
+                        </div>
+                        <a href="https://wa.me/5551984988600" class="mt-12 text-[#00a4ce] font-headline font-black uppercase text-sm flex items-center gap-2 group/link">
+                            Saber mais 
+                            <span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1">north_east</span>
+                        </a>
+                    </div>
+
+                    <div class="md:col-span-2 bg-gradient-to-br from-[#1a1c1c] to-[#2a2c2c] p-16 rounded-[4.5rem] text-white overflow-hidden relative group hover-card shadow-2xl border-none">
+                        <div class="absolute inset-0 bg-primary opacity-5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700"></div>
+                        <div class="relative z-10 flex flex-col h-full justify-between items-start text-left">
+                            <div>
+                                <span class="text-[#00a4ce] font-black tracking-[0.4em] text-xs uppercase mb-6 block">Estoque Disponível</span>
+                                <h2 class="text-4xl md:text-[clamp(2.5rem,7vw,4.5rem)] font-headline font-black mb-10 leading-[0.9] tracking-tighter uppercase italic text-balance">Flakes r-PET <br/>Prontos para Entrega</h2>
+                    <p class="text-xl opacity-80 max-w-2xl font-bold italic leading-relaxed">Compramos fardos com pagamento imediato e fornecemos flakes com laudo técnico. Tudo dentro do RS, sem intermediários.</p>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-6 mt-16">
+                                <a href="https://wa.me/5551984988600" class="bg-[#00a4ce] text-white px-12 py-6 rounded-full font-headline font-black text-lg transition-all hover-button shadow-[0_20px_40px_-10px_rgba(0,164,206,0.4)] uppercase tracking-tighter italic text-center">Consultar Lotes</a>
+                                <a href="https://wa.me/5551984988600" class="bg-white text-on-surface px-12 py-6 rounded-full font-headline font-black text-lg transition-all hover-button shadow-xl uppercase tracking-tighter italic text-center">Vender Produção</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact & Why Us: Vibrant Orange Layout -->
+        <section id="impacto" class="bg-[#f09d22] px-4 sm:px-8 py-16 sm:py-32 relative overflow-hidden">
+            <div class="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
+                <!-- Stat card -->
+                <div class="bg-white rounded-[3rem] sm:rounded-[4.5rem] p-8 sm:p-16 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-64 h-64 bg-[#f09d22]/20 rounded-full blur-3xl"></div>
+                    <div class="relative z-10">
+                        <span class="text-on-surface-variant font-black uppercase tracking-[0.3em] text-xs block mb-8">Impacto Comprovado</span>
+                        <span class="font-headline text-[9rem] font-black text-[#f09d22] block leading-none italic tracking-tighter">-60%</span>
+                        <h3 class="text-3xl font-headline font-black text-on-surface mt-4 mb-6 uppercase italic tracking-tighter">Energia Economizada</h3>
+                        <p class="text-on-surface-variant font-bold text-base leading-relaxed max-w-sm">Reciclar PET consome até 60% menos energia do que produzir resina virgem a partir do petróleo.</p>
+                        <div class="mt-10 pt-8 border-t border-outline-variant/30 grid grid-cols-2 gap-6">
+                            <div>
+                                <span class="font-headline font-black text-3xl text-primary italic">75%</span>
+                                <p class="text-on-surface-variant text-xs font-black uppercase tracking-widest mt-1">Menos CO₂</p>
+                            </div>
+                            <div>
+                                <span class="font-headline font-black text-3xl text-[#00a4ce] italic">7,4</span>
+                                <p class="text-on-surface-variant text-xs font-black uppercase tracking-widest mt-1">Barris poupados/ton</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Text side -->
+                <div class="text-left">
+                    <span class="text-black/50 font-black tracking-[0.4em] text-xs uppercase mb-8 block font-headline">Por que usar r-PET?</span>
+                    <h2 class="font-headline text-4xl md:text-6xl font-black text-black mb-12 leading-[0.9] tracking-tighter uppercase italic">Números que<br/>justificam<br/>a escolha</h2>
+                    <ul class="space-y-4">
+                        <li class="bg-black/10 hover:bg-black/15 transition-all p-8 rounded-[2rem] flex items-center gap-6 group">
+                            <span class="font-headline font-black text-4xl text-black italic shrink-0">75%</span>
+                            <span class="text-black/80 font-black text-lg uppercase tracking-tight">menos emissão de CO₂ vs. resina virgem</span>
+                        </li>
+                        <li class="bg-black/10 hover:bg-black/15 transition-all p-8 rounded-[2rem] flex items-center gap-6 group">
+                            <span class="font-headline font-black text-4xl text-black italic shrink-0">7,4</span>
+                            <span class="text-black/80 font-black text-lg uppercase tracking-tight">barris de petróleo poupados por tonelada reciclada</span>
+                        </li>
+                        <li class="bg-black/10 hover:bg-black/15 transition-all p-8 rounded-[2rem] flex items-center gap-6 group">
+                            <span class="font-headline font-black text-4xl text-black italic shrink-0">∞</span>
+                            <span class="text-black/80 font-black text-lg uppercase tracking-tight">o PET pode ser reciclado múltiplas vezes sem perder qualidade</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="bg-surface-container py-12 sm:py-20 px-4 sm:px-8 border-t border-outline-variant/20">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-outline-variant/30">
+                    <div class="py-10 md:py-0 md:px-16 first:pl-0 last:pr-0 flex flex-col gap-2">
+                        <span class="font-headline font-black text-[5rem] leading-none text-on-surface italic tracking-tighter">5M+</span>
+                        <p class="text-on-surface-variant font-black uppercase tracking-widest text-xs">Garrafas Processadas/Ano</p>
+                    </div>
+                    <div class="py-10 md:py-0 md:px-16 flex flex-col gap-2">
+                        <span class="font-headline font-black text-[5rem] leading-none text-primary italic tracking-tighter">60%</span>
+                        <p class="text-on-surface-variant font-black uppercase tracking-widest text-xs">Menos Energia vs. Resina Virgem</p>
+                    </div>
+                    <div class="py-10 md:py-0 md:px-16 flex flex-col gap-2">
+                        <span class="font-headline font-black text-[5rem] leading-none text-on-surface italic tracking-tighter">100%</span>
+                        <p class="text-on-surface-variant font-black uppercase tracking-widest text-xs">Operação Regional no RS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact & ESG -->
+        <section class="bg-surface-container-low px-4 sm:px-8 pt-12 pb-16 sm:pb-32 text-left">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <span class="text-on-surface-variant font-black uppercase tracking-[0.2em] text-xs block mb-3">Por que a Leandro Recicle?</span>
+                        <h2 class="font-headline font-extrabold text-on-surface text-4xl md:text-6xl uppercase italic tracking-tighter leading-none">Especialistas em PET.<br/><span class="text-primary">Só em PET.</span></h2>
+                    </div>
+                    <a href="https://wa.me/5551984988600" class="shrink-0 bg-primary text-white px-10 py-5 rounded-full font-headline font-black uppercase tracking-tighter italic text-base hover-button shadow-lg">Falar com especialista</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="md:col-span-2 bg-white hover:bg-surface-container-low transition-all p-10 rounded-[3rem] border border-outline-variant/20 hover-card group shadow-sm">
+                        <span class="material-symbols-outlined text-primary text-5xl mb-6 block" style="font-variation-settings: 'FILL' 1;">analytics</span>
+                        <h3 class="text-2xl font-headline font-bold text-on-surface mb-4 uppercase italic tracking-tighter">Rastreabilidade de Lote e Pureza Garantida</h3>
+                        <p class="text-on-surface-variant leading-relaxed text-sm">Cada lote de flakes sai com identificação de origem, cor e índice de viscosidade. Você integra nosso r-PET ao seu relatório Scope 3 com dados reais, não estimativas.</p>
+                    </div>
+                    <div class="bg-primary p-10 rounded-[3rem] flex flex-col justify-between hover-card">
+                        <div>
+                            <span class="material-symbols-outlined text-white/60 text-3xl mb-6 block" style="font-variation-settings:'FILL' 1">security</span>
+                            <h3 class="font-headline font-bold text-white text-xl uppercase italic tracking-tighter mb-3">Relatório de Impacto</h3>
+                            <p class="text-white/70 text-sm leading-relaxed">Documentação de impacto ambiental por compra para seu balanço ESG.</p>
+                        </div>
+                        <span class="font-headline font-black text-white/20 text-5xl italic mt-8">ESG</span>
+                    </div>
+                    <div class="bg-white hover:bg-surface-container-low transition-all p-10 rounded-[3rem] border border-outline-variant/20 flex flex-col justify-between hover-card shadow-sm">
+                        <div>
+                            <span class="material-symbols-outlined text-[#00a4ce] text-3xl mb-6 block" style="font-variation-settings:'FILL' 1">public</span>
+                            <h3 class="font-headline font-bold text-on-surface text-xl uppercase italic tracking-tighter mb-3">Entrega no RS</h3>
+                            <p class="text-on-surface-variant text-sm leading-relaxed">Frota própria para Porto Alegre e Região Metropolitana. Demais regiões sob consulta.</p>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-outline-variant/20 text-on-surface-variant text-xs font-black uppercase tracking-widest">Porto Alegre · RS</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section: Trust & Clarity -->
+        <section class="py-16 sm:py-24 px-4 sm:px-8 bg-white" id="faq">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-primary font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Dúvidas Comuns</span>
+                    <h2 class="font-headline text-4xl md:text-5xl font-black text-on-surface uppercase italic tracking-tighter">Perguntas Frequentes</h2>
+                </div>
+                <div class="space-y-4">
+                    <details class="group bg-surface-container-low rounded-[2rem] p-8 cursor-pointer transition-all hover:bg-surface-container-high">
+                        <summary class="flex justify-between items-center font-headline font-bold text-xl uppercase italic list-none">
+                            Vocês realizam a coleta do material?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <p class="mt-6 text-on-surface-variant font-bold leading-relaxed opacity-80">
+                            Sim. Temos frota própria para Porto Alegre e toda a Região Metropolitana. Para volumes maiores em outras cidades do RS, entre em contato para verificar disponibilidade de agenda.
+                        </p>
+                    </details>
+                    
+                    <details class="group bg-surface-container-low rounded-[2rem] p-8 cursor-pointer transition-all hover:bg-surface-container-high">
+                        <summary class="flex justify-between items-center font-headline font-bold text-xl uppercase italic list-none">
+                            Qual o volume mínimo para venda?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <p class="mt-6 text-on-surface-variant font-bold leading-relaxed opacity-80">
+                            Trabalhamos com fardos prensados de PET pós-consumo. Não há um peso mínimo fixo, mas quanto mais consolidada a carga, melhor a cotação. Mande uma mensagem com a estimativa de volume e respondemos rápido.
+                        </p>
+                    </details>
+
+                    <details class="group bg-surface-container-low rounded-[2rem] p-8 cursor-pointer transition-all hover:bg-surface-container-high">
+                        <summary class="flex justify-between items-center font-headline font-bold text-xl uppercase italic list-none">
+                            Como funciona o processo de pagamento?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <p class="mt-6 text-on-surface-variant font-bold leading-relaxed opacity-80">
+                            Após a pesagem e conferência do material, o pagamento é feito de forma ágil e direta. Sem enrolação — você sabe o valor antes de fechar e recebe conforme combinado.
+                        </p>
+                    </details>
+
+                    <details class="group bg-surface-container-low rounded-[2rem] p-8 cursor-pointer transition-all hover:bg-surface-container-high">
+                        <summary class="flex justify-between items-center font-headline font-bold text-xl uppercase italic list-none">
+                            Os polímeros vendidos possuem garantia de pureza?
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                        </summary>
+                        <p class="mt-6 text-on-surface-variant font-bold leading-relaxed opacity-80">
+                            Sim. Nossos flakes passam por triagem por cor, lavagem e descontaminação. Cada lote tem índice de viscosidade (IV) controlado e pode ser acompanhado de laudo técnico — essencial para sopradoras e transformadores de PET.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Bento Section -->
+        <section class="py-16 sm:py-24 px-4 sm:px-8 bg-industrial-tint" id="contato">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16">
+                    <span class="inline-block text-sm font-bold tracking-[0.2em] text-on-surface-variant uppercase mb-4 font-label">Negociações e Parcerias</span>
+                    <h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface tracking-tight leading-[1.1] max-w-3xl">
+                        Fale direto com quem <span class="text-primary italic">compra e vende PET no RS</span>.
+                    </h2>
+                </div>
+                <!-- Bento Contact Layout -->
+                <!-- Balanced Layout: Form + Info (Equal Height) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                    <div class="lg:col-span-7 bg-white p-10 rounded-[3rem] shadow-xl border border-outline-variant/10 flex flex-col h-full hover-card border-none">
+                        <h3 class="font-headline text-3xl font-black text-on-surface uppercase italic mb-8">Envie sua Mensagem</h3>
+                        <form class="flex flex-col flex-1 gap-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="flex flex-col">
+                                    <label class="block text-[#000000] font-black text-xs uppercase tracking-widest mb-4">Nome</label>
+                                    <input type="text" class="bg-surface-container-low border-none rounded-2xl px-6 py-5 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Seu nome completo"/>
+                                </div>
+                                <div class="flex flex-col">
+                                    <label class="block text-[#000000] font-black text-xs uppercase tracking-widest mb-4">E-mail</label>
+                                    <input type="email" class="bg-surface-container-low border-none rounded-2xl px-6 py-5 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="email@empresa.com.br"/>
+                                </div>
+                                <div class="flex flex-col">
+                                    <label class="block text-[#000000] font-black text-xs uppercase tracking-widest mb-4">Empresa</label>
+                                    <input type="text" class="bg-surface-container-low border-none rounded-2xl px-6 py-5 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Sua Razão Social"/>
+                                </div>
+                                <div class="flex flex-col">
+                                    <label class="block text-[#000000] font-black text-xs uppercase tracking-widest mb-4">Assunto</label>
+                                    <select class="bg-surface-container-low border-none rounded-2xl px-6 py-5 focus:ring-2 focus:ring-primary/20 transition-all appearance-none">
+                                        <option>Venda de Fardos</option>
+                                        <option>Compra de Flakes r-PET</option>
+                                        <option>Logística/Parcerias</option>
+                                        <option>Outros</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex flex-col flex-1">
+                                <label class="block text-[#000000] font-black text-xs uppercase tracking-widest mb-4">Sua Mensagem</label>
+                                <textarea class="w-full h-full flex-1 bg-surface-container-low border-none rounded-2xl px-6 py-5 focus:ring-2 focus:ring-primary/20 transition-all resize-none" placeholder="Conte-nos sobre seu projeto ou dúvida..."></textarea>
+                            </div>
+                            <button class="w-full md:w-auto px-12 py-5 bg-primary text-white font-headline font-black text-lg rounded-full shadow-lg hover-button transition-all uppercase italic flex items-center justify-center gap-3 self-start" type="submit">
+                                Enviar Mensagem
+                                <span class="material-symbols-outlined">send</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Info Sidebar -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/5551984988600" class="bg-primary-fixed p-8 rounded-[2.5rem] flex items-center justify-between group hover:bg-secondary-fixed transition-all hover-card shadow-sm">
+                            <div>
+                                <span class="text-[10px] font-bold text-on-primary-fixed-variant uppercase tracking-widest block mb-1">Canais Oficiais</span>
+                                <h3 class="text-2xl font-headline font-black text-on-primary-fixed uppercase italic">WhatsApp</h3>
+                                <p class="text-on-primary-fixed-variant font-bold mt-1">(51) 98498-8600</p>
+                            </div>
+                            <span class="material-symbols-outlined text-4xl text-on-primary-fixed">chat</span>
+                        </a>
+
+                        <!-- Email & Address Unified -->
+                        <div class="bg-surface-container-low p-10 rounded-[2.5rem] space-y-8 border border-outline-variant/10 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">mail</span>
+                                <div>
+                                    <h4 class="font-headline font-bold text-on-surface text-xs uppercase tracking-widest mb-1">E-mail</h4>
+                                    <p class="font-black text-secondary text-base lg:text-lg break-all">leandrocomerciodereciclagem@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">location_on</span>
+                                <div>
+                                    <h4 class="font-headline font-bold text-on-surface text-xs uppercase tracking-widest mb-1">Nossa Sede</h4>
+                                    <p class="font-black text-on-surface italic text-xl leading-tight">Porto Alegre, <br/>Rio Grande do Sul</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logistics Card (Fills the blank space) -->
+                        <div class="bg-primary-container p-10 rounded-[2.5rem] flex flex-col justify-between hover-card shadow-xl border-none text-on-primary">
+                            <div>
+                                <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-8">
+                                    <span class="material-symbols-outlined text-white text-3xl">local_shipping</span>
+                                </div>
+                                <h3 class="font-headline font-bold text-2xl mb-4 uppercase italic tracking-tight">Logística de Fábrica</h3>
+                                <p class="text-on-primary/80 text-base leading-relaxed font-bold">Retiramos seus fardos e repomos seu estoque de flakes com frota própria em Porto Alegre e Região Metropolitana.</p>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-white/20 flex justify-between items-center text-[10px] font-black uppercase tracking-widest opacity-70">
+                                <span>Segunda a Sexta</span>
+                                <span>08:00 - 18:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer: From stitch -->
+    <footer class="bg-[#f2f4f3] w-full pt-16 pb-8 border-t border-[#bfc9c1]/20 font-body text-sm leading-relaxed">
+        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="col-span-1">
+                <div class="flex items-center gap-3 mb-10 group cursor-pointer">
+                    <div class="relative flex items-center justify-center">
+                        <img src="logo.png" alt="Logo" loading="lazy" decoding="async" class="h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"/>
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                        <div class="text-lg font-black tracking-tighter text-on-surface font-headline uppercase italic leading-none">Leandro</div>
+                        <div class="text-[9px] font-extrabold tracking-[0.05em] text-primary/80 font-headline uppercase whitespace-nowrap">Comércio e Reciclagem</div>
+                    </div>
+                </div>
+                <p class="text-[#404943] mb-8 max-w-xs font-body italic opacity-80">© 2026 Leandro Comércio e Reciclagem. Compra de fardos e venda de flakes r-PET em Porto Alegre e RS.</p>
+            </div>
+            <div>
+                <h4 class="font-headline font-bold text-on-surface mb-6 uppercase tracking-widest text-xs">Menu</h4>
+                <div class="flex flex-col space-y-4 font-medium font-body">
+                    <a class="text-[#404943] hover:text-primary transition-colors" href="#sustentabilidade">O Ciclo PET</a>
+                    <a class="text-[#404943] hover:text-primary transition-colors" href="#materiais">Materiais</a>
+                    <a class="text-[#404943] hover:text-primary transition-colors" href="#impacto">Impacto ESG</a>
+                    <a class="text-[#404943] hover:text-primary transition-colors" href="#faq">FAQ</a>
+                    <a class="text-[#404943] hover:text-primary transition-colors" href="#venda">Quero Vender</a>
+                    <a class="text-[#404943] hover:text-primary transition-colors" href="#negocios">Quero Comprar</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-headline font-bold text-on-surface mb-6 uppercase tracking-widest text-xs">Canais Comerciais</h4>
+                <div class="flex flex-col space-y-4 font-body">
+                    <a class="text-[#404943] hover:text-primary transition-colors flex items-center gap-2" href="mailto:leandrocomerciodereciclagem@gmail.com">
+                        <span class="material-symbols-outlined text-sm">mail</span>
+                        leandrocomerciodereciclagem@gmail.com
+                    </a>
+                    <a class="text-[#404943] hover:text-primary transition-colors flex items-center gap-2" href="https://wa.me/5551984988600">
+                        <span class="material-symbols-outlined text-sm">phone_iphone</span>
+                        (51) 98498-8600
+                    </a>
+                    <div class="pt-4 flex gap-4">
+                        <div class="w-10 h-10 bg-surface-container-highest rounded-full flex items-center justify-center text-primary hover-button cursor-pointer">
+                            <span class="material-symbols-outlined">language</span>
+                        </div>
+                        <div class="w-10 h-10 bg-surface-container-highest rounded-full flex items-center justify-center text-primary hover-button cursor-pointer">
+                            <span class="material-symbols-outlined">share</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-outline-variant/20 text-center text-[#404943]/60">
+            © Leandro Comércio e Reciclagem S.A.
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5551984988600" class="whatsapp-float hover-button" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <div class="leaf-icon">
+            <span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">eco</span>
+        </div>
+    </a>
+
+
+    <script src="animations.js"></script>
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link, .close-menu-action');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+            });
+        });
+    </script>
+    <script>
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.remove('nav-transparent', 'border-transparent');
+                nav.classList.add('nav-colored', 'shadow-lg', 'border-outline-variant/20');
+            } else {
+                nav.classList.add('nav-transparent', 'border-transparent');
+                nav.classList.remove('nav-colored', 'shadow-lg', 'border-outline-variant/20');
+            }
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+
+
+:root {
+    /* Color Tokens - Industrial Trust Palette */
+    --color-primary: #0f5238;
+    --color-primary-container: #2d6a4f;
+    --color-primary-fixed: #b1f0ce;
+    --color-surface: #f8faf9;
+    --color-surface-low: #f2f4f3;
+    --color-surface-lowest: #ffffff;
+    --color-on-surface: #000000;
+    --color-on-surface-variant: #1a1c1c;
+    --color-outline: #707973;
+    --color-outline-variant: rgba(191, 201, 201, 0.4);
+    
+    /* Extra Design Tokens for Visual Depth */
+    --color-industrial-tint: #f1f3f2;
+    --color-soft-mint: #e8f5ee;
+    --color-warm-clay: #fdfaf7;
+    --color-mesh-accent: rgba(45, 106, 79, 0.05);
+
+    /* Spacing Tokens */
+    --space-xs: 0.5rem;   /* 8px */
+    --space-sm: 1rem;     /* 16px */
+    --space-md: 1.5rem;   /* 24px */
+    --space-lg: 3rem;     /* 48px */
+    --space-xl: 6rem;     /* 96px */
+
+    /* Elevation Tokens */
+    --shadow-soft: 0 4px 20px -4px rgba(25, 28, 28, 0.04);
+    --shadow-industrial: 0 24px 48px -12px rgba(15, 82, 56, 0.12);
+    --shadow-editorial: 0 16px 64px -12px rgba(25, 28, 28, 0.06);
+
+    /* Animation Tokens */
+    --transition-base: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Base Styles */
+body {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Typography Hierarchy */
+.text-balance { text-wrap: balance; }
+
+.font-headline {
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+/* Atomic: Industrial Card (Organism Base) */
+.industrial-card, .hover-card {
+    background: var(--color-surface-lowest);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: 1.5rem;
+    padding: var(--space-md);
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    will-change: transform, box-shadow;
+}
+
+.industrial-card:hover, .hover-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: var(--color-primary-container);
+    box-shadow: var(--shadow-industrial);
+    z-index: 10;
+}
+
+/* Bento Layout Specifics */
+.bento-grid {
+    display: grid;
+    gap: var(--space-md);
+}
+
+/* Buttons (Atoms) */
+.hover-button {
+    transition: var(--transition-bounce);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.hover-button:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 24px -6px rgba(15, 82, 56, 0.2);
+    filter: brightness(1.08);
+}
+
+.hover-card, .hover-button, input, textarea, select {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:hover, textarea:hover, select:hover {
+    background-color: white !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+input:focus, textarea:focus, select:focus {
+    background-color: white !important;
+    box-shadow: 0 8px 24px rgba(45, 106, 79, 0.1);
+    transform: translateY(-2px);
+}
+
+/* --- Section Backgrounds & Textures --- */
+
+/* Hero Mesh Gradient */
+.bg-mesh-gradient {
+    background-color: var(--color-surface);
+    background-image: 
+        radial-gradient(at 0% 0%, var(--color-mesh-accent) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, rgba(177, 240, 206, 0.15) 0, transparent 50%),
+        radial-gradient(at 50% 100%, var(--color-mesh-accent) 0, transparent 50%);
+}
+
+/* Industrial Dot Pattern */
+.bg-dot-pattern {
+    background-image: radial-gradient(var(--color-outline-variant) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/* Tint Variations */
+.bg-industrial-tint { background-color: var(--color-industrial-tint); }
+.bg-soft-mint { background-color: var(--color-soft-mint); }
+.bg-warm-clay { background-color: var(--color-warm-clay); }
+
+/* --- New Industrial Aesthetic Tokens --- */
+.bg-mint-mesh {
+    background-color: var(--color-soft-mint);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(15, 82, 56, 0.05) 0, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(177, 240, 206, 0.4) 0, transparent 50%);
+}
+
+.industrial-glass {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 40px -12px rgba(15, 82, 56, 0.1);
+}
+
+.floating {
+    animation: floating 6s ease-in-out infinite;
+}
+
+.floating-delayed {
+    animation: floating 8s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes floating {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(5px, -15px) rotate(1deg); }
+    66% { transform: translate(-5px, -10px) rotate(-0.5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.feature-tag {
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    background: rgba(15, 82, 56, 0.08);
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid rgba(15, 82, 56, 0.1);
+}
+
+/* --- End Section Backgrounds --- */
+
+/* Hero Section Specifics */
+#tree-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.12;
+    pointer-events: none;
+    will-change: transform; /* Hint for hardware acceleration */
+}
+
+.hero-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-container) 100%);
+}
+
+/* Utility: Glassmorphism (Sally's touch for delight) */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px); /* Reduced from 12px for better performance */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Floating Action: WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+    width: 64px;
+    height: 64px;
+    background-color: var(--color-primary);
+    color: var(--color-surface-lowest);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 32px rgba(15, 82, 56, 0.3);
+    z-index: 1000;
+    text-decoration: none;
+    transition: var(--transition-bounce);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) rotate(8deg);
+}
+
+.whatsapp-float .leaf-icon {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--color-primary-fixed);
+    color: var(--color-primary);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: 3px solid var(--color-surface-lowest);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Mobile Menu Links */
+.mobile-nav-link:hover {
+    transform: translateX(12px);
+    color: var(--color-primary);
+}
+
+.mobile-nav-link:active {
+    transform: scale(0.95);
+    color: var(--color-primary);
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+    }
+}
+
+/* ---- Mobile Responsiveness ---- */
+@media (max-width: 640px) {
+
+    /* Nav */
+    #main-nav .max-w-\[1600px\] {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    /* Hero */
+    .hero-organic-bg .max-w-7xl {
+        padding-top: 7rem !important;
+        padding-bottom: 8rem !important;
+    }
+
+    /* Sections padding */
+    section {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    /* Impacto card -60% number */
+    .font-headline.text-\[9rem\] {
+        font-size: 6rem;
+    }
+
+    /* Stats numbers */
+    .font-headline.text-\[5rem\] {
+        font-size: 3.5rem;
+    }
+
+    /* Negocios dark card */
+    .md\:col-span-2 .text-\[clamp\(2\.5rem\,7vw\,4\.5rem\)\] {
+        font-size: 2rem;
+    }
+}
+
+/* --- Hero Section Refinement: Organic Modern --- */
+.hero-organic-bg { background-color: #f7f3f0; } /* Industrial Performance Palette */
+
+.hero-blob-mask {
+    border-radius: 66% 34% 75% 25% / 30% 64% 36% 70%;
+    transition: border-radius 1s ease-in-out;
+}
+
+.hero-blob-mask:hover {
+    border-radius: 30% 70% 41% 59% / 55% 36% 64% 45%;
+}
+
+/* --- 3D Bottle Transition Hub --- */
+.bottle-transition-hub {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 460px;
+    z-index: 15;
+    pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    .bottle-transition-hub {
+        width: 320px;
+        top: -8rem !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .bottle-transition-hub {
+        width: 240px;
+        top: -10rem !important;
+    }
+}
+
+.floating-3d-bottle {
+    animation: bottle-float 6s ease-in-out infinite;
+    filter: drop-shadow(0 40px 80px rgba(0,0,0,0.2));
+}
+
+@keyframes bottle-float {
+    0%, 100% { transform: translateY(0) rotate(3deg); }
+    50% { transform: translateY(-24px) rotate(-3deg); }
+}
+
+/* --- Header Navigation States --- */
+.nav-transparent {
+    background: transparent !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.nav-colored {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+}
+
+.nav-capsule {
+    background: rgba(45, 106, 79, 0.05);
+    border-radius: 9999px;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-capsule:hover {
+    background: rgba(45, 106, 79, 0.1);
+}
+
+
+
+.bg-canvas-wrapper {
+    z-index: 0;
+    pointer-events: none;
+}
+
+.section-bg-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+}
