@@ -30,9 +30,16 @@ if (canvas) {
     }, { passive: true });
 }
 
+let lastWidth = 0;
+
 function resize() {
+    const newWidth = window.innerWidth;
+    // No mobile, ignora resize causado por scroll (mudança só de altura)
+    if (newWidth === lastWidth) return;
+    lastWidth = newWidth;
+
     const rect = canvas.parentElement.getBoundingClientRect();
-    W = canvas.width = window.innerWidth;
+    W = canvas.width = newWidth;
     H = canvas.height = rect.height;
     reset();
 }
