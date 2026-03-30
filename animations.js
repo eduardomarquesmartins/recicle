@@ -1,17 +1,24 @@
 const canvas = document.getElementById('tree-canvas');
-const ctx = canvas ? canvas.getContext('2d') : null;
+const ctx = canvas ? canvas.getContext('2d', { alpha: true }) : null;
 
 let W, H;
 let root;
 let windParticles = [];
 let mouseX = 0;
 let smoothedMouseX = 0;
-let globalWind = 0.15; 
+let globalWind = 0.4;
 let gust = 0;
 let targetGust = 0;
+let treeReadiness = 0;
 let isVisible = !!canvas;
+let frameCount = 0;
 
-// Intersection Observer to pause animation when not visible
+// Pre-computed branch colors (avoid hsl() string per frame)
+const BRANCH_COLORS = [0,1,2,3,4,5,6,7].map(d => {
+    const l = 20 + d * 4;
+    return `hsl(145,40%,${l}%)`;
+});
+
 if (canvas) {
     const observer = new IntersectionObserver((entries) => {
         isVisible = entries[0].isIntersecting;
@@ -20,7 +27,7 @@ if (canvas) {
 
     window.addEventListener('mousemove', e => {
         mouseX = (e.clientX / window.innerWidth) - 0.5;
-    });
+    }, { passive: true });
 }
 
 function resize() {
@@ -29,7 +36,7 @@ function resize() {
     H = canvas.height = rect.height;
     reset();
 }
-window.addEventListener('resize', resize);
+window.addEventListener('resize', resize, { passive: true });
 
 class WindParticle {
     constructor() {
@@ -40,7 +47,7 @@ class WindParticle {
         this.x = W + 100;
         this.y = Math.random() * H;
         this.size = 1.5 + Math.random() * 4;
-        this.speed = 2 + Math.random() * 5;
+        this.speed = 0.8 + Math.random() * 2;
         this.angle = Math.random() * Math.PI * 2;
         this.spin = (Math.random() - 0.5) * 0.15;
         this.color = ['#2d6a4f', '#44775a', '#b1f0ce'][Math.floor(Math.random() * 3)];
@@ -61,20 +68,18 @@ class WindParticle {
             ctx.beginPath();
             ctx.ellipse(0, 0, this.size, this.size * 2, 0, 0, Math.PI * 2);
             ctx.fillStyle = this.color;
-            ctx.globalAlpha = 0.25;
+            ctx.globalAlpha = 0.6;
             ctx.fill();
             ctx.restore();
         } else {
             ctx.beginPath();
-            ctx.lineWidth = 1.2;
-            ctx.strokeStyle = `rgba(45, 106, 79, 0.4)`;
-            const segments = 10;
-            const sLen = this.streakLen / segments;
-            for (let i = 0; i <= segments; i++) {
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = 'rgba(45,106,79,0.7)';
+            const sLen = this.streakLen / 6;
+            for (let i = 0; i <= 6; i++) {
                 const sx = this.x + i * sLen;
                 const sy = this.y + Math.sin(sx * 0.02 + time * 0.002) * 20;
-                if (i === 0) ctx.moveTo(sx, sy);
-                else ctx.lineTo(sx, sy);
+                i === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
             }
             ctx.stroke();
         }
@@ -95,14 +100,12 @@ class Branch {
         this.seed = Math.random() * 1000;
         this.children = [];
         this.leaves = [];
-        
-        // Spring physics
         this.sway = 0;
         this.swayVel = 0;
+        this.color = BRANCH_COLORS[Math.min(depth, 7)];
     }
 
     draw(time, currentWind) {
-        // Growth — mais lento e suave
         const growSpeed = 0.006 + (7 - this.depth) * 0.002;
         if (this.p < 1) {
             this.p = Math.min(1, this.p + growSpeed);
@@ -112,36 +115,40 @@ class Branch {
             }
         }
 
-        // Spring-based Sway Physics — mais suave, menos tremor
-        const stiffness = 0.006 + (7 - this.depth) * 0.008;
-        const dampening = 0.96;
-        const windForce = Math.sin(time * 0.0005 + this.seed) * (this.depth + 1) * 0.004 * currentWind;
-        
-        const accel = ( (windForce * 1.5) - this.sway ) * stiffness;
-        this.swayVel = (this.swayVel + accel) * dampening;
-        this.sway += this.swayVel;
+        const stiffness = 0.008 + (7 - this.depth) * 0.01;
+        const dampening = 0.94;
+
+        if (this.finished && treeReadiness >= 0.5) {
+            const windScale = Math.max(0, (treeReadiness - 0.5) * 2);
+            const windForce = Math.sin(time * 0.0006 + this.seed) * (this.depth + 1) * 0.022 * currentWind * windScale;
+            const accel = ((windForce * 5) - this.sway) * stiffness;
+            this.swayVel = (this.swayVel + accel) * dampening;
+            this.sway += this.swayVel;
+            // Limita o balanço máximo por profundidade
+            const maxSway = 0.08 + this.depth * 0.04;
+            this.sway = Math.max(-maxSway, Math.min(maxSway, this.sway));
+        } else {
+            this.sway = 0;
+            this.swayVel = 0;
+        }
 
         const curAngle = this.angle + this.sway;
         const curL = this.length * this.p;
         const tx = Math.sin(curAngle) * curL;
         const ty = -Math.cos(curAngle) * curL;
-
         const w1 = this.thickness;
         const w2 = this.thickness * (1 - this.p * 0.4);
-        
-        // Skip drawing very thin branches to save performance
+
         if (w2 < 0.5 && this.depth > 5) return;
 
         const nx = Math.cos(curAngle);
         const ny = Math.sin(curAngle);
 
+        ctx.fillStyle = this.color;
         ctx.save();
         ctx.translate(this.x, this.y);
-        ctx.fillStyle = `hsl(145, 40%, ${20 + this.depth * 4}%)`;
-        ctx.beginPath();
-        ctx.arc(0, 0, w1, 0, Math.PI * 2);
-        ctx.fill();
 
+        // Merge arc + trapezoid into one path to reduce draw calls
         ctx.beginPath();
         ctx.moveTo(-nx * w1, -ny * w1);
         ctx.lineTo(tx - nx * w2, ty - ny * w2);
@@ -150,25 +157,22 @@ class Branch {
         ctx.closePath();
         ctx.fill();
 
-        if (this.p < 1 || this.depth === 7) {
-            ctx.beginPath();
-            ctx.arc(tx, ty, w2, 0, Math.PI * 2);
-            ctx.fill();
-        }
         ctx.restore();
 
         const tipX = this.x + tx;
         const tipY = this.y + ty;
 
-        this.children.forEach(c => {
-            c.x = tipX;
-            c.y = tipY;
-            c.draw(time, currentWind);
-        });
+        for (let i = 0; i < this.children.length; i++) {
+            this.children[i].x = tipX;
+            this.children[i].y = tipY;
+            this.children[i].draw(time, currentWind);
+        }
 
         if (this.finished && this.depth > 2) {
             if (this.leaves.length === 0) this.initLeaves();
-            this.leaves.forEach(l => l.draw(time, tipX, tipY, currentWind));
+            for (let i = 0; i < this.leaves.length; i++) {
+                this.leaves[i].draw(time, tipX, tipY, currentWind);
+            }
         }
     }
 
@@ -178,14 +182,14 @@ class Branch {
         for (let i = 0; i < num; i++) {
             const spread = 0.4 + this.depth * 0.06;
             const side = (num === 2) ? (i === 0 ? -1 : 1) : (i - 1);
-            const newAngle = this.angle + (side * spread) + (Math.random()-0.5)*0.3;
-            this.children.push(new Branch(this, 0, 0, newAngle, this.length*0.75, this.thickness*0.6, this.depth+1));
+            const newAngle = this.angle + (side * spread) + (Math.random() - 0.5) * 0.3;
+            this.children.push(new Branch(this, 0, 0, newAngle, this.length * 0.75, this.thickness * 0.6, this.depth + 1));
         }
     }
 
     initLeaves() {
         const colors = ['#0f5238', '#2d6a4f', '#44775a'];
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 8; i++) {
             this.leaves.push(new TreeLeaf(colors[i % 3]));
         }
     }
@@ -205,9 +209,9 @@ class TreeLeaf {
         const flutter = Math.sin(time * 0.005 + this.seed) * (1 + windIntensity * 3);
         const sway = Math.sin(time * 0.001 + this.seed) * 2 * windIntensity;
         ctx.beginPath();
-        ctx.arc(x + this.ox + sway + flutter, y + this.oy + flutter/2, this.size, 0, Math.PI * 2);
+        ctx.arc(x + this.ox + sway + flutter, y + this.oy + flutter / 2, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
-        ctx.globalAlpha = 0.35 + Math.sin(time * 0.003 + this.seed) * 0.1;
+        ctx.globalAlpha = 0.65 + Math.sin(time * 0.003 + this.seed) * 0.15;
         ctx.fill();
         ctx.globalAlpha = 1.0;
     }
@@ -215,20 +219,29 @@ class TreeLeaf {
 
 function reset() {
     const isMobile = window.innerWidth < 768;
-    const containerWidth = Math.min(window.innerWidth, 1280); 
-    
-    let startX;
-    if (isMobile) {
-        startX = window.innerWidth / 2;
-    } else {
-        startX = (window.innerWidth - containerWidth) / 2 + (containerWidth * 0.18); 
-    }
-    
+    const containerWidth = Math.min(window.innerWidth, 1280);
+    treeReadiness = 0;
+
+    const startX = isMobile
+        ? window.innerWidth / 2
+        : (window.innerWidth - containerWidth) / 2 + (containerWidth * 0.18);
+
     const treeHeight = isMobile ? H * 0.22 : H * 0.28;
     const treeThickness = isMobile ? 14 : 18;
-    
+
     root = new Branch(null, startX, H, 0, treeHeight, treeThickness, 0);
-    windParticles = Array.from({length: isMobile ? 40 : 60}, () => new WindParticle());
+    // Reduzido: 80 desktop, 40 mobile
+    windParticles = Array.from({ length: isMobile ? 40 : 80 }, () => new WindParticle());
+}
+
+function countBranches(branch) {
+    let total = 1, done = branch.finished ? 1 : 0;
+    for (let i = 0; i < branch.children.length; i++) {
+        const r = countBranches(branch.children[i]);
+        total += r.total;
+        done += r.done;
+    }
+    return { total, done };
 }
 
 function loop(time) {
@@ -236,24 +249,31 @@ function loop(time) {
         requestAnimationFrame(loop);
         return;
     }
+
+    frameCount++;
     ctx.clearRect(0, 0, W, H);
-    
-    if (Math.random() < 0.001) targetGust = 0.2 + Math.random() * 0.3;
-    targetGust *= 0.995; 
-    gust += (targetGust - gust) * 0.01; 
-    
-    smoothedMouseX += (mouseX - smoothedMouseX) * 0.02;
-    const currentWind = (globalWind + (smoothedMouseX * 1.5) + gust);
-    
-    windParticles.forEach(p => {
-        p.update(currentWind);
-        p.draw(time);
-    });
+
+    if (Math.random() < 0.002) targetGust = 0.5 + Math.random() * 0.8;
+    targetGust *= 0.993;
+    gust += (targetGust - gust) * 0.015;
+
+    smoothedMouseX += (mouseX - smoothedMouseX) * 0.04;
+    const currentWind = globalWind + smoothedMouseX * 6.0 + gust;
+
+    // Conta galhos a cada 30 frames (não todo frame)
+    if (frameCount % 30 === 0 && root) {
+        const { total, done } = countBranches(root);
+        treeReadiness = total > 0 ? done / total : 0;
+    }
+
+    for (let i = 0; i < windParticles.length; i++) {
+        windParticles[i].update(currentWind);
+        windParticles[i].draw(time);
+    }
 
     if (root) root.draw(time, currentWind);
     requestAnimationFrame(loop);
 }
-
 
 // --- Bottle Smile Transition Logic ---
 function initBottleTransition() {
@@ -264,21 +284,16 @@ function initBottleTransition() {
     const smilingSrc = 'garrafasorry.png';
     let isSmiling = false;
 
-    // Preload smiling image to avoid flicker
     const preloadImg = new Image();
     preloadImg.src = smilingSrc;
 
     setInterval(() => {
-        // Subtle dip in opacity to mark the transition without being transparent
         bottleImg.style.opacity = '0.98';
-        
         setTimeout(() => {
             isSmiling = !isSmiling;
             bottleImg.src = isSmiling ? smilingSrc : normalSrc;
-            
-            // Return to full solid state immediately
             bottleImg.style.opacity = '1';
-        }, 150); // Faster swap for less "shimmer"
+        }, 150);
     }, 3000);
 }
 
@@ -286,30 +301,23 @@ function initBottleTransition() {
 function initFixedBottleScroll() {
     const fixedBottle = document.getElementById('fixed-bg-bottle');
     const targetSection = document.getElementById('materiais');
-    
     if (!fixedBottle || !targetSection) return;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
-                // Show if section is in or above viewport (scrolled past)
                 fixedBottle.classList.remove('opacity-0');
                 fixedBottle.classList.add('opacity-100');
             } else {
-                // Hide if we scroll back up above the section
                 fixedBottle.classList.add('opacity-0');
                 fixedBottle.classList.remove('opacity-100');
             }
         });
-    }, {
-        threshold: 0,
-        rootMargin: "0px 0px -20% 0px" // Trigger slightly before it hits the bottom
-    });
+    }, { threshold: 0, rootMargin: "0px 0px -20% 0px" });
 
     observer.observe(targetSection);
 }
 
-// Global Initialization after everything is loaded
 document.addEventListener('DOMContentLoaded', () => {
     resize();
     requestAnimationFrame(loop);
