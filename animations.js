@@ -112,7 +112,7 @@ class Branch {
         this.color = BRANCH_COLORS[Math.min(depth, 7)];
     }
 
-    draw(time, currentWind) {
+    draw(time, currentWind, parentSway = 0) {
         const growSpeed = 0.006 + (7 - this.depth) * 0.002;
         if (this.p < 1) {
             this.p = Math.min(1, this.p + growSpeed);
@@ -122,24 +122,30 @@ class Branch {
             }
         }
 
-        const stiffness = 0.008 + (7 - this.depth) * 0.01;
-        const dampening = 0.94;
+        const stiffness = 0.01 + (7 - this.depth) * 0.005;
+        const dampening = 0.94; // Menos amortecimento para balançar mais livremente
 
-        if (this.finished && treeReadiness >= 0.5) {
-            const windScale = Math.max(0, (treeReadiness - 0.5) * 2);
-            const windForce = Math.sin(time * 0.0006 + this.seed) * (this.depth + 1) * 0.022 * currentWind * windScale;
-            const accel = ((windForce * 5) - this.sway) * stiffness;
-            this.swayVel = (this.swayVel + accel) * dampening;
-            this.sway += this.swayVel;
-            // Limita o balanço máximo por profundidade
-            const maxSway = 0.08 + this.depth * 0.04;
-            this.sway = Math.max(-maxSway, Math.min(maxSway, this.sway));
-        } else {
-            this.sway = 0;
-            this.swayVel = 0;
+        // O balanço agora existe desde o nascimento
+        const freq = 0.0005 + (this.depth * 0.0001);
+        const localWind = currentWind * (0.8 + Math.sin(time * 0.0015 + this.seed) * 0.2);
+        
+        // Aumentando a influência do vento para trazer vida de volta
+        const windForce = Math.sin(time * freq + this.seed) * 0.05 * localWind * this.p;
+        const accel = ((windForce) - this.sway) * stiffness;
+        
+        this.swayVel = (this.swayVel + accel) * dampening;
+        this.sway += this.swayVel;
+        
+        // Limite de balanço ampliado, mas ainda seguro para não quebrar a árvore
+        const maxSway = 0.06 + (this.depth * 0.015);
+        if (Math.abs(this.sway) > maxSway) {
+            this.sway = Math.sign(this.sway) * maxSway; 
+            this.swayVel *= 0.5; 
         }
 
-        const curAngle = this.angle + this.sway;
+        // O ângulo final herda o balanço do pai (Hiararquia Reativa)
+        const totalSway = parentSway + this.sway;
+        const curAngle = this.angle + totalSway;
         const curL = this.length * this.p;
         const tx = Math.sin(curAngle) * curL;
         const ty = -Math.cos(curAngle) * curL;
@@ -152,10 +158,17 @@ class Branch {
         const ny = Math.sin(curAngle);
 
         ctx.fillStyle = this.color;
+        
+        // --- Desenho do Galho com Round Joints ---
         ctx.save();
         ctx.translate(this.x, this.y);
 
-        // Merge arc + trapezoid into one path to reduce draw calls
+        // Joint: Preenche o "vazio" entre galhos com um arco
+        ctx.beginPath();
+        ctx.arc(0, 0, w1, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Corpo do galho (trapezóide)
         ctx.beginPath();
         ctx.moveTo(-nx * w1, -ny * w1);
         ctx.lineTo(tx - nx * w2, ty - ny * w2);
@@ -169,13 +182,14 @@ class Branch {
         const tipX = this.x + tx;
         const tipY = this.y + ty;
 
+        // Passa o balanço acumulado para os filhos
         for (let i = 0; i < this.children.length; i++) {
             this.children[i].x = tipX;
             this.children[i].y = tipY;
-            this.children[i].draw(time, currentWind);
+            this.children[i].draw(time, currentWind, totalSway);
         }
 
-        if (this.finished && this.depth > 2) {
+        if (this.p > 0.8 && this.depth > 2) {
             if (this.leaves.length === 0) this.initLeaves();
             for (let i = 0; i < this.leaves.length; i++) {
                 this.leaves[i].draw(time, tipX, tipY, currentWind);
