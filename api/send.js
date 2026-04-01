@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
     try {
         const data = await resend.emails.send({
             from: 'Leandro Recicle <onboarding@resend.dev>',
-            to: ['leandrocomerciodereciclagem@gmail.com'],
+            to: ['edumartinsclaro@gmail.com'],
             subject: `Novo Lead: ${subject} - ${name}`,
             html: `
                 <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px; border-radius: 10px;">
