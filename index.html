@@ -837,11 +837,7 @@
                 const originalBtnContent = submitBtn.innerHTML;
                 submitBtn.innerHTML = 'Enviando... <span class="material-symbols-outlined animate-spin">sync</span>';
                 submitBtn.disabled = true;
-
-                // IMPORTANTE: Altere esta URL quando fizer o deploy no Render
-                // Ex: https://projeto-recicle-api.onrender.com/api/send
-                const BACKEND_URL = 'http://localhost:3000/api/send';
-
+                const BACKEND_URL = '/api/send';
                 fetch(BACKEND_URL, {
                     method: 'POST',
                     headers: {
